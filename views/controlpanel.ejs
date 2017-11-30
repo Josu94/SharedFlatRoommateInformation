@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Main Page</title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    </head>
+    
+    <style>
+            .title {
+                font-family: 'Lora', serif;
+            }
+            
+    </style>
+    
+    <body>
+        
+        <section class="hero is-light">
+        <div class="hero-body">
+          <div class="container" >
+            <h1 class="title">
+              Welcome to your account, <?php echo $_SESSION['email']; ?>
+            </h1>
+            <h2 class="subtitle">
+              Below you can see the information about your room, and your room-mates.
+            </h2>
+          </div>
+        </div>
+      </section>
+        
+        
+        <div class="container" style="padding: 10px">
+            <div class="column">
+                <h1 class="title">Information on Your Room</h1>
+                <hr>
+                
+                <div class="box has-text-centered">
+                    
+                    <h1 class="subtitle" style="margin-bottom: 0px;">Room Status: <strong style="color:green"> Someone inside.</strong></h1>
+                    <h1 class="subtitle">Temperature: <strong> 28</strong></h1>
+                    <button class="button is-danger">Click here, if you don't want to be disturbed.</button>
+                </div>
+                
+                
+            </div>
+            <hr>
+            <h1 class="title">Information On Your Roommates</h1>
+            
+            <div class='column'>
+            
+            <table class='table'>
+                
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Room Status</th>
+                        <th>Temperature</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                
+                <tr>
+                    <td>Turhan Ali Gür</td>
+                    <td style='color: green'>Inside</td>
+                    <td>25</td>
+                    <td style='color: red'>Does not want to be disturbed.</td>
+                </tr>
+                
+                <tr>
+                    <td>Josua Öhler</td>
+                    <td>Outside</td>
+                    <td>25</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Bla Blason</td>
+                    <td style='color: green'>Inside</td>
+                    <td>25</td>
+                    <td style='color: green'>Available.</td>
+                </tr>
+                
+                
+                
+            </table>
+            <hr>
+            </div>
+        </div>
+        
+        
+    </body>
+</html>

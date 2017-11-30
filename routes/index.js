@@ -68,4 +68,8 @@ router.post('/delete', function (req, res, next) {
     res.sendStatus(200);
 });
 
+router.get('/controlpanel', function (req, res, next) {
+    res.render('controlpanel', { title: 'Startseite' });
+});
+
 module.exports = router;
