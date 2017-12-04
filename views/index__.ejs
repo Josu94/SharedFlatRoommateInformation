@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Login Page</title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+        
+    </head>
+    <body>
+        <section style= "background-color: white" class="hero is-fullheight">
+            <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">Roommate Detector Control Panel</h1>
+                <div class="column is-6 is-offset-3">
+                    <div class="box">
+                        <h1 class="subtitle"> Please login, to access the panel.</h1>
+                        <hr>
+                    <form action="controlpanel.php" method="post">
+                      <div class="field">
+                        <div class="control">
+                          <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
+                        </div>
+                      </div>
+
+                      <div class="field">
+                        <div class="control">
+                          <input class="input is-large" type="password" name = "password" placeholder="Your Password">
+                        </div>
+                      </div>
+                      <div class="field">
+                        <label class="checkbox">
+                          <input type="checkbox">
+                          Remember me
+                        </label>
+                      </div>
+                        <input class="button is-primary" value="Login" type="submit">
+                    </form>
+                  </div>
+              </div>
+            </div>
+            </div>
+        </section>
+        
+    </body>
+</html>
