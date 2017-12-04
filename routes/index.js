@@ -45,7 +45,8 @@ router.post('/insert', function (req, res, next) {
     var item = {
         deviceId: req.body.deviceId,
         motionValue: req.body.motionValue,
-        temperature: req.body.temperature
+        temperature: req.body.temperature,
+        timestamp: req.body.timestamp
     };
 
     mongo.connect(url, function (err, db) {
