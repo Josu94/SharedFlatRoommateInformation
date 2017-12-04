@@ -72,4 +72,9 @@ router.get('/controlpanel', function (req, res, next) {
     res.render('controlpanel', { title: 'Startseite' });
 });
 
+router.post('/test', function (req, res, next) {
+    console.log("req Data: " + req.toString());
+    res.sendStatus(200);
+});
+
 module.exports = router;
