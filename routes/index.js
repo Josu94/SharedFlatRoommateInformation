@@ -73,7 +73,7 @@ router.get('/controlpanel', function (req, res, next) {
 });
 
 router.post('/test', function (req, res, next) {
-    console.log("req Data: " + req.toString());
+    console.log(req.body);
     res.sendStatus(200);
 });
 
