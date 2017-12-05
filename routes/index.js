@@ -3,9 +3,9 @@ var router = express.Router();
 var mongo = require('mongodb').MongoClient;
 /* To check if everything in the DB went right. Normally used for testing */
 var assert = require('assert');
-
 /* URL which points to the DB. */
 var url = 'mongodb://Metropolia:metropolia2017@sharedflatroommateinformation-shard-00-00-dyngb.mongodb.net:27017,sharedflatroommateinformation-shard-00-01-dyngb.mongodb.net:27017,sharedflatroommateinformation-shard-00-02-dyngb.mongodb.net:27017/test?ssl=true&replicaSet=SharedFlatRoommateInformation-shard-0&authSource=admin';
+var mysql = require('mysql');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -49,6 +49,7 @@ router.post('/insert', function (req, res, next) {
         timestamp: req.body.timestamp
     };
 
+    // Persist data in a MongoDB
     mongo.connect(url, function (err, db) {
         assert.equal(null, err);
         db.collection('motion-data').insertOne(item, function (err, result) {
@@ -56,6 +57,18 @@ router.post('/insert', function (req, res, next) {
             console.log('Item inserted');
             db.close();
         });
+    });
+
+    // Persist data in a MySQL Database hosted in 000webhost
+    var con = mysql.createConnection({
+        host: "rmdt.000webhost.com",
+        user: "id3865670_metropolia",
+        password: "metropolia2017jotu"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected to MySQL Database!");
     });
 
     res.redirect('/');
