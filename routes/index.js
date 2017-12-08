@@ -63,13 +63,18 @@ router.post('/insert', function (req, res, next) {
     var con = mysql.createConnection({
         host: "160.153.16.12",
         user: "turhan2",
-        password: "turhan12345"
+        password: "turhan12345",
+        database: "iot_test"
     });
 
     con.connect(function(err) {
         if (err) throw err;
-        console.log("Connected to MySQL Database!");
-    });
+        var sql = "UPDATE Roommate SET tempature = '10000' WHERE deviceID = '2C:3A:E8:3B:68:DB'";
+        con.query(sql, function (err, result) {
+        if (err) throw err;
+          console.log(result.affectedRows + " record(s) updated");
+        });
+     });
 
     res.redirect('/');
 });
