@@ -49,17 +49,7 @@ router.post('/insert', function (req, res, next) {
         timestamp: req.body.timestamp
     };
 
-    // Persist data in a MongoDB
-    mongo.connect(url, function (err, db) {
-        assert.equal(null, err);
-        db.collection('motion-data').insertOne(item, function (err, result) {
-            assert.equal(null, err);
-            console.log('Item inserted');
-            db.close();
-        });
-    });
-
-    // Persist data in a MySQL Database hosted in 000webhost
+    // Persist data in a MySQL Database hosted on bigdaddy (Turhan)
     var con = mysql.createConnection({
         host: "160.153.16.12",
         user: "turhan2",
@@ -70,6 +60,7 @@ router.post('/insert', function (req, res, next) {
     con.connect(function(err) {
         if (err) throw err;
         var sql = "UPDATE Roommate SET temperature = '20000' WHERE deviceID = '2C:3A:E8:08:9E:24'";
+        var sql_ = 'UPDATE Roomate SET peopleInside = ' + peopleInside + motionValue + ', temperature = ' + temperature + ', lastUpdate = ' + timestamp + 'WHERE deviveID = ' + deviceId;
         con.query(sql, function (err, result) {
         if (err) throw err;
           console.log(result.affectedRows + " record(s) updated");
