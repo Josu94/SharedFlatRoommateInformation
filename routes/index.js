@@ -61,9 +61,9 @@ router.post('/insert', function (req, res, next) {
 
     // Persist data in a MySQL Database hosted in 000webhost
     var con = mysql.createConnection({
-        host: "localhost",
-        user: "id3865670_metropolia",
-        password: "metropolia2017jotu"
+        host: "160.153.16.12",
+        user: "turhan2",
+        password: "turhan12345"
     });
 
     con.connect(function(err) {
