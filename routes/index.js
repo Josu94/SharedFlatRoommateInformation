@@ -42,12 +42,10 @@ router.get('/get-data', function (req, res, next) {
 });
 
 router.post('/insert', function (req, res, next) {
-    var item = {
-        deviceId: req.body.deviceId,
-        motionValue: req.body.motionValue,
-        temperature: req.body.temperature,
-        timestamp: req.body.timestamp
-    };
+    var deviceId = req.body.deviceId;
+    var motionValue =  req.body.motionValue;
+    var temperature = req.body.temperature;
+    var timestamp =  req.body.timestamp;
 
     // Persist data in a MySQL Database hosted on bigdaddy (Turhan)
     var con = mysql.createConnection({
