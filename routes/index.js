@@ -69,7 +69,7 @@ router.post('/insert', function (req, res, next) {
 
     con.connect(function(err) {
         if (err) throw err;
-        var sql = "UPDATE Roommate SET temperature = '10000' WHERE deviceID = '2C:3A:E8:08:9E:24'";
+        var sql = "UPDATE Roommate SET temperature = '20000' WHERE deviceID = '2C:3A:E8:08:9E:24'";
         con.query(sql, function (err, result) {
         if (err) throw err;
           console.log(result.affectedRows + " record(s) updated");
