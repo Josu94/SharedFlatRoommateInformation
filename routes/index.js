@@ -25,22 +25,6 @@ router.post('/motion', function (req, res, next) {
 
 /* ---------------------------------------------------- */
 
-router.get('/get-data', function (req, res, next) {
-    var resultArray = [];
-    mongo.connect(url, function (err, db) {
-        assert.equal(null, err);
-        var cursor = db.collection('motion-data').find();
-        cursor.forEach(function(doc, err) {
-            assert.equal(null, err);
-            resultArray.push(doc);
-        }, function () {
-            db.close();
-            console.log(resultArray);
-            /* res.render('index', {items: resultArray}); */
-        });
-    });
-});
-
 router.post('/insert', function (req, res, next) {
     var deviceId = req.body.deviceId;
     var motionValue =  req.body.motionValue;
@@ -68,8 +52,32 @@ router.post('/insert', function (req, res, next) {
     res.redirect('/');
 });
 
-router.post('/update', function (req, res, next) {
-    res.sendStatus(200);
+// Route for do not disturb feature
+router.post('/dnd', function (req, res, next) {
+    var deviceId = req.body.deviceId;
+    var temperature = req.body.temperature;
+    var timestamp =  req.body.timestamp;
+    var dnd = req.body.dnd;
+
+    // Persist data in a MySQL Database hosted on bigdaddy (Turhan)
+    var con = mysql.createConnection({
+        host: "160.153.16.12",
+        user: "turhan2",
+        password: "turhan12345",
+        database: "iot_test"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        var sql = 'UPDATE Roommate SET availability = ' + dnd + ', temperature = ' + temperature + ', lastUpdate = ' + "'" + timestamp + "'" + ' WHERE deviceID = ' + "'" + deviceId + "'";
+        console.log(sql);
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result.affectedRows + " record(s) updated");
+        });
+    });
+
+    res.redirect('/');
 });
 
 router.post('/delete', function (req, res, next) {
